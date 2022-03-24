@@ -1,0 +1,252 @@
+Author: GaiusPluto
+# 本项目秉持个人配置越少越简单越好
+# 能够配置的东西越多反而还不如直接配置word
+# 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+# 由于使用python-docx库本身的局限，很多东西不能面面俱到，比如字号、首行缩进字符单位、行距单位等等，就算我补上了也还是有其他单位的需求我可能不知道，所以最好就直接用磅值 用其他单位我都会直接标注
+model:
+  -
+    # 论文格式不同大多是字体还有行距不同
+    # 其他大同小异的默认配置即可，无需过多更改
+    docxtype: 0 # word文件类型[论文:0]
+    page: # 页面
+      # 默认A4纸 方向纵向 改横向将direction改为True
+      # 页面宽度和高度 单位厘米
+      width: 21
+      height: 29.7
+      direction: False
+      header_distance: 4.5 # 页眉 单位厘米
+      footer_distance: 1.8 # 页脚 单位厘米
+      # 上下左右边距 单位厘米
+      top_margin: 5.5
+      bottom_margin: 2.5
+      left_margin: 2.5
+      right_margin: 4
+      # 默认左侧装订，这个我暂时还没找到什么设置方法
+    #
+    font_models:
+      -
+        name: '摘要' # 样式名
+        method: 'add' # add为添加，不填或其他为设置，本身样式库无法完全修改必须添加其他样式且命名不能重复
+        base_style: 'Heading 1' # 样式基准 默认Normal即正文
+        font:
+          CN: '黑体' # 中文字体
+          EN: '' # 西文字体，无内容默认与中文字体相同
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          size: '三号' # 不填或填错均为三号,直接填数字为磅值如：size: 16
+          # 以下三个特殊字体
+          bold: False #不加粗，加粗改为True
+          italic: False #不倾斜，倾斜改为True
+          underline: False # 无下划线，加下划线改为True
+        paragraph:
+          alignment: '居中' # 不填或填错均为左对齐
+          # 左右侧缩进 首行缩进无法配置两字符，通常用两字符的磅值代替设置，这里只用配置是否设置首行缩进
+          left_indent: 0
+          right_indent: 0
+          first_line_indent: False # 摘要一般居中不首行缩进
+          # 段前段后 单位磅值 同样不支持行设置 这里需要自行设置
+          # 这里根据字体大小来设置，有时候用磅值，有时候有用行就非常麻烦多了判断反而程序容易出错就都用磅值
+          # 比如字体三号 磅值16 0.5行就设8
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          space_before: 0
+          space_after: 11
+          # 行距
+          line_spacing_rule: '1.5 倍行距' # 注意数字与字符间有个空格
+          # 有值才设定，千万不要设置个双倍行距又设置个固定值 单位磅值 多倍行距单位默认相对值
+          line_spacing: ~
+      -
+        name: '论文标题 1' # 样式名
+        method: 'add' # add为添加，不填或其他为设置，本身样式库无法完全修改必须添加其他样式且命名不能重复
+        base_style: 'Heading 1' # 样式基准 默认Normal即正文
+        font:
+          CN: '黑体' # 中文字体
+          EN: '' # 西文字体，无内容默认与中文字体相同
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          size: '三号' # 不填或填错均为三号,直接填数字为磅值如：size: 16
+          # 以下三个特殊字体
+          bold: False #不加粗，加粗改为True
+          italic: False #不倾斜，倾斜改为True
+          underline: False # 无下划线，加下划线改为True
+        paragraph:
+          alignment: '左对齐' # 不填或填错均为左对齐
+          # 左右侧缩进 首行缩进无法配置两字符，通常用两字符的磅值代替设置，这里只用配置是否设置首行缩进
+          left_indent: 0
+          right_indent: 0
+          first_line_indent: False
+          # 段前段后 单位磅值 同样不支持行设置 这里需要自行设置
+          # 这里根据字体大小来设置，有时候用磅值，有时候有用行就非常麻烦多了判断反而程序容易出错就都用磅值
+          # 比如字体三号 磅值16 0.5行就设8
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          space_before: 0
+          space_after: 11
+          # 行距
+          line_spacing_rule: '1.5 倍行距' # 注意数字与字符间有个空格
+          # 有值才设定，千万不要设置个双倍行距又设置个固定值 单位磅值 多倍行距单位默认相对值
+          line_spacing: ~
+      - name: '论文标题 2' # 样式名
+        method: 'add' # add为添加，不填或其他为设置，本身样式库无法完全修改必须添加其他样式且命名不能重复
+        base_style: 'Heading 2' # 样式基准 默认Normal即正文
+        font:
+          CN: '黑体' # 中文字体
+          EN: '' # 西文字体，无内容默认与中文字体相同
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          size: '四号' # 不填或填错均为三号,直接填数字为磅值如：size: 16
+          # 以下三个特殊字体
+          bold: False #不加粗，加粗改为True
+          italic: False #不倾斜，倾斜改为True
+          underline: False # 无下划线，加下划线改为True
+        paragraph:
+          alignment: '左对齐' # 不填或填错均为左对齐
+          # 左右侧缩进 首行缩进无法配置两字符，通常用两字符的磅值代替设置，这里只用配置是否设置首行缩进
+          left_indent: 0
+          right_indent: 0
+          first_line_indent: False
+          # 段前段后 单位磅值 同样不支持行设置 这里需要自行设置
+          # 这里根据字体大小来设置，有时候用磅值，有时候有用行就非常麻烦多了判断反而程序容易出错就都用磅值
+          # 比如字体三号 磅值16 0.5行就设8
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          space_before: 7
+          space_after: 0
+          # 行距
+          line_spacing_rule: '1.5 倍行距' # 注意数字与字符间有个空格
+          # 有值才设定，千万不要设置个双倍行距又设置个固定值 单位磅值 多倍行距单位默认相对值
+          line_spacing: ~
+      - name: '论文标题 3' # 样式名
+        method: 'add' # add为添加，不填或其他为设置，本身样式库无法完全修改必须添加其他样式且命名不能重复
+        base_style: 'Heading 3' # 样式基准 默认Normal即正文
+        font:
+          CN: '黑体' # 中文字体
+          EN: '' # 西文字体，无内容默认与中文字体相同
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          size: '小四' # 不填或填错均为三号,直接填数字为磅值如：size: 16
+          # 以下三个特殊字体
+          bold: False #不加粗，加粗改为True
+          italic: False #不倾斜，倾斜改为True
+          underline: False # 无下划线，加下划线改为True
+        paragraph:
+          alignment: '左对齐' # 不填或填错均为左对齐
+          # 左右侧缩进 首行缩进无法配置两字符，通常用两字符的磅值代替设置，这里只用配置是否设置首行缩进
+          left_indent: 0
+          right_indent: 0
+          first_line_indent: False
+          # 段前段后 单位磅值 同样不支持行设置 这里需要自行设置
+          # 这里根据字体大小来设置，有时候用磅值，有时候有用行就非常麻烦多了判断反而程序容易出错就都用磅值
+          # 比如字体三号 磅值16 0.5行就设8
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          space_before: 6
+          space_after: 0
+          # 行距
+          line_spacing_rule: '1.5 倍行距' # 注意数字与字符间有个空格
+          # 有值才设定，千万不要设置个双倍行距又设置个固定值 单位磅值 多倍行距单位默认相对值
+          line_spacing: ~
+      - name: 'Normal' # 正文 样式名
+        method: 're' # add为添加，不填或其他为设置，本身样式库无法完全修改必须添加其他样式且命名不能重复
+        base_style: 'Normal' # 样式基准 默认Normal即正文
+        font:
+          CN: '宋体' # 中文字体
+          EN: 'Times New Roman' # 西文字体，无内容默认与中文字体相同
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          size: '小四' # 不填或填错均为三号,直接填数字为磅值如：size: 16
+          # 以下三个特殊字体
+          bold: False #不加粗，加粗改为True
+          italic: False #不倾斜，倾斜改为True
+          underline: False # 无下划线，加下划线改为True
+        paragraph:
+          alignment: '左对齐' # 不填或填错均为左对齐
+          # 左右侧缩进 首行缩进无法配置两字符，通常用两字符的磅值代替设置，这里只用配置是否设置首行缩进
+          left_indent: 0
+          right_indent: 0
+          first_line_indent: True # 正文一般首行缩进
+          # 段前段后 单位磅值 同样不支持行设置 这里需要自行设置
+          # 这里根据字体大小来设置，有时候用磅值，有时候有用行就非常麻烦多了判断反而程序容易出错就都用磅值
+          # 比如字体三号 磅值16 0.5行就设8
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          space_before: 0
+          space_after: 0
+          # 行距
+          line_spacing_rule: '固定值' # 注意数字与字符间有个空格
+          # 有值才设定，千万不要设置个双倍行距又设置个固定值 单位磅值 多倍行距单位默认相对值
+          line_spacing: 20
+      - name: '关键词'
+        method: 'add' # add为添加，不填或其他为设置，本身样式库无法完全修改必须添加其他样式且命名不能重复
+        base_style: 'Normal' # 样式基准 默认Normal即正文
+        font:
+          CN: '黑体' # 中文字体
+          EN: '' # 西文字体，无内容默认与中文字体相同
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          size: '小四' # 不填或填错均为三号,直接填数字为磅值如：size: 16
+          # 以下三个特殊字体
+          bold: False #不加粗，加粗改为True
+          italic: False #不倾斜，倾斜改为True
+          underline: False # 无下划线，加下划线改为True
+        paragraph:
+          alignment: '两端对齐' # 不填或填错均为左对齐
+          # 左右侧缩进 首行缩进无法配置两字符，通常用两字符的磅值代替设置，这里只用配置是否设置首行缩进
+          left_indent: 0
+          right_indent: 0
+          first_line_indent: False # 正文一般首行缩进
+          # 段前段后 单位磅值 同样不支持行设置 这里需要自行设置
+          # 这里根据字体大小来设置，有时候用磅值，有时候有用行就非常麻烦多了判断反而程序容易出错就都用磅值
+          # 比如字体三号 磅值16 0.5行就设8
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          space_before: 0
+          space_after: 0
+          # 行距
+          line_spacing_rule: '固定值' # 注意数字与字符间有个空格
+          # 有值才设定，千万不要设置个双倍行距又设置个固定值 单位磅值 多倍行距单位默认相对值
+          line_spacing: 20
+      - name: '图表公式'
+        method: 'add' # add为添加，不填或其他为设置，本身样式库无法完全修改必须添加其他样式且命名不能重复
+        base_style: 'Normal' # 样式基准 默认Normal即正文
+        font:
+          CN: '宋体' # 中文字体
+          EN: 'Times New Roman' # 西文字体，无内容默认与中文字体相同
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          size: '五号' # 不填或填错均为三号,直接填数字为磅值如：size: 16
+          # 以下三个特殊字体
+          bold: False #不加粗，加粗改为True
+          italic: False #不倾斜，倾斜改为True
+          underline: False # 无下划线，加下划线改为True
+        paragraph:
+          alignment: '居中' # 不填或填错均为左对齐
+          # 左右侧缩进 首行缩进无法配置两字符，通常用两字符的磅值代替设置，这里只用配置是否设置首行缩进
+          left_indent: 0
+          right_indent: 0
+          first_line_indent: False # 正文一般首行缩进
+          # 段前段后 单位磅值 同样不支持行设置 这里需要自行设置
+          # 这里根据字体大小来设置，有时候用磅值，有时候有用行就非常麻烦多了判断反而程序容易出错就都用磅值
+          # 比如字体三号 磅值16 0.5行就设8
+          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+          space_before: 0
+          space_after: 0
+          # 行距
+          line_spacing_rule: '固定值' # 注意数字与字符间有个空格
+          # 有值才设定，千万不要设置个双倍行距又设置个固定值 单位磅值 多倍行距单位默认相对值
+          line_spacing: 20
+#      - name: 'your new style'
+#        method: 'add' # add为添加，不填或其他为设置，本身样式库无法完全修改必须添加其他样式且命名不能重复
+#        base_style: 'Normal' # 样式基准 默认Normal即正文
+#        font:
+#          CN: '宋体' # 中文字体
+#          EN: '' # 西文字体，无内容默认与中文字体相同
+#          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+#          size: '三号' # 不填或填错均为三号,直接填数字为磅值如：size: 16
+#          # 以下三个特殊字体
+#          bold: False #不加粗，加粗改为True
+#          italic: False #不倾斜，倾斜改为True
+#          underline: False # 无下划线，加下划线改为True
+#        paragraph:
+#          alignment: '左对齐' # 不填或填错均为左对齐
+#          # 左右侧缩进 首行缩进无法配置两字符，通常用两字符的磅值代替设置，这里只用配置是否设置首行缩进
+#          left_indent: 0
+#          right_indent: 0
+#          first_line_indent: False # 正文一般首行缩进
+#          # 段前段后 单位磅值 同样不支持行设置 这里需要自行设置
+#          # 这里根据字体大小来设置，有时候用磅值，有时候有用行就非常麻烦多了判断反而程序容易出错就都用磅值
+#          # 比如字体三号 磅值16 0.5行就设8
+#          # 字号与磅值对应 https://baike.baidu.com/item/%E7%A3%85%E5%80%BC/9361799
+#          space_before: 0
+#          space_after: 0
+#          # 行距
+#          line_spacing_rule: '单倍行距' # 注意数字与字符间有个空格
+#          # 有值才设定，千万不要设置个双倍行距又设置个固定值 单位磅值 多倍行距单位默认相对值
+#          line_spacing: ~
